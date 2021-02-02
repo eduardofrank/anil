@@ -1,0 +1,65 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript">
+
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        file = EXT:anil/Resources/Public/Images/logo.svg
+        fileInverted = EXT:anil/Resources/Public/Images/logo-inverted.svg
+        height = 94
+        width = 346
+        alt = anil
+        linktitle = Ir a Home
+    }
+    favicon {
+        file = EXT:anil/Resources/Public/Icons/favicon.ico
+    }
+    fluidtemplate {
+        layoutRootPath = EXT:anil/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:anil/Resources/Private/Partials/Page/
+        templateRootPath = EXT:anil/Resources/Private/Templates/Page/
+    }
+}
+
+
+##################
+### EXTENSIONS ###
+##################
+plugin.bootstrap_package {
+    view {
+        layoutRootPath = EXT:anil/Resources/Private/Layouts/
+        partialRootPath = EXT:anil/Resources/Private/Partials/
+        templateRootPath = EXT:anil/Resources/Private/Templates/
+    }
+}
+
+
+########################
+### CONTENT ELEMENTS ###
+########################
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:anil/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:anil/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:anil/Resources/Private/Templates/ContentElements/
+    }
+}
+
+
+################################
+### BOOTSTRAP SCSS CONSTANTS ###
+################################
+plugin.bootstrap_package.settings.scss {
+    primary = #eb3e4a
+    secondary = #013859
+}
+
+################################
+#### ADDED BY EDUARDO FRANK ####
+################################
+plugin.bootstrap_package.settings.scss.grid-float-breakpoint = 9999px
