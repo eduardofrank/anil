@@ -2,7 +2,7 @@
     --clr-primary: #40489b;
     --clr-neutral-light: #ffffff;
     --clr-neutral-medium: #7d7d7d;
-    --clr-red: #ec2227;
+    --clr-red: #ec2227;ca
     
     --ff-sans: 'Nunito Sans', sans-serif
     --fw-400: 400;
@@ -10,7 +10,7 @@
     --fw-800: 800;
     --fw-900: 900;
     
-    --fs-500: 1.25rem;
+    --fs-500: 1rem;
 }
 
 body, .body-bg {
@@ -169,7 +169,7 @@ body, .body-bg {
     display:flex;
     width:250px;
     justify-content: center;
-    margin-bottom:.9rem;
+    /*margin-bottom:.9rem;*/
 }
 
 @media (min-width:768px) {
@@ -273,27 +273,31 @@ body, .body-bg {
 /**** PROJECT GRID ****/
 /***********************/
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: .5em;
-    grid-auto-flow: dense;
+    display: flex;
+    flex-direction: column;
 }
 
 .item {
     position: relative;
     width: 100%;
     height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow:hidden;
-    min-height: 18vw;
+}
+
+
+.wrapper > * + * {
+  margin-top: 0.5em;
+}
+
+.item img {
+    vertical-align: middle;
+    border-style: none;
+    width: 100%;
+    height: auto;
 }
 
 .front-image {
     position: absolute;
-    min-width:100%;
-    min-height:100%;
+    width:100%;
     object-fit:cover;
     visibility:hidden;
     opacity:0;
@@ -302,7 +306,6 @@ body, .body-bg {
 .item:hover .front-image {
     visibility: visible;
     opacity: .95;
-    /*filter:contrast(.89) brightness(130%) blur(2%);*/
     -webkit-transition: opacity 0.6s ease-in-out;
 }
 
@@ -317,10 +320,9 @@ body, .body-bg {
 
 .anil {
     display: block;
-    position: absolute;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
+    position: relative;
+    width: 100%;
+    height:auto;
     -webkit-transition: opacity 0.6s ease-in-out;
 }
 
@@ -332,12 +334,10 @@ body, .body-bg {
     bottom: 0;
     overflow: hidden;
     width: 0%;
-    height: 100%;
     display: flex;
     flex-flow: row;
     justify-content: center;
     align-items: center;
-    object-fit: cover;
 }
 
 .text h2 {
@@ -350,35 +350,99 @@ body, .body-bg {
     font-size: 1.9rem;
 }
 
-.tall {
-  grid-row: span 2;
-}
-
-.six, .ten, .fourteen, .eighteen  {
-  grid-column: 2 / 3;
-}
-
-.nine, .thirteen, .seventeen {
-  grid-column: 1 / 2;
-}
-
-.eleven, .nineteen {
-  grid-column: 3 / 4;
-}
-
-@media (max-width: 767.9px) {
+@media (min-width:768px) {
     .wrapper {
         display: grid;
-        grid-template-rows: repeat(28, minmax(24rem, 1fr));
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: .5em;
+        grid-auto-flow: dense;
     }
-    .one, .three, .four, .six, .eight, .nine, .eleven, .fourteen, .sixteen, .seventeen, .eighteen, .nineteen {
-        grid-row: span 1;
-        grid-column: span 1;
+
+    .item {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow:hidden;
+        min-height: 18vw;
+        margin-top: 0;
     }
-    .two, .five, .seven, .ten, .twelve, .thirteen, .fifteen, .twenty {
-        grid-row: span 2;
-        grid-column: span 1;
+
+    .front-image {
+        position: absolute;
+        min-width:100%;
+        min-height:100%;
+        object-fit:cover;
+        visibility:hidden;
+        opacity:0;
+    }
+
+    .item:hover .front-image {
+        visibility: visible;
+        opacity: .95;
+        -webkit-transition: opacity 0.6s ease-in-out;
+    }
+
+    .item:hover .switch {
+        width: 100%;
+    }
+
+    .item:hover .anil {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .anil {
+        display: block;
+        position: absolute;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        -webkit-transition: opacity 0.6s ease-in-out;
+    }
+
+    .switch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        width: 0%;
+        height: 100%;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        object-fit: cover;
+    }
+
+    .text h2 {
+        white-space: nowrap;
+        position: relative;
+        color: var(--clr-primary);
+        font-weight: 900;
+        overflow: hidden;
+        letter-spacing: -1.4px;
+        font-size: 1.9rem;
+    }
+
+    .tall {
+    grid-row: span 2;
+    }
+
+    .six, .ten, .fourteen, .eighteen  {
+    grid-column: 2 / 3;
+    }
+
+    .nine, .thirteen, .seventeen {
+    grid-column: 1 / 2;
+    }
+
+    .eleven, .nineteen {
+    grid-column: 3 / 4;
     }
 }
 
@@ -386,35 +450,55 @@ body, .body-bg {
 /***********************/
 /******* COMPAÑÍA ******/
 /***********************/
-#p3 .body-bg {
-    background: url(../Images/logo2.svg) no-repeat bottom right;
-    background-size: 45vw;
-}
-
 #p3 p {
     color: var(--clr-primary);
     font-size: var(--fs-500);
+    padding: 0 0.5em;
 }
 
-@media (min-width: 300px) {
-    #p3 .frame-container {
-        position: relative;
-        max-width: 85vw;
-        padding-right: 0;
-        padding-left: 0;
-        margin-right: auto;
-        margin-left: 2rem;
+#p3 .main-section {
+    padding-top: 2em;
+}
+
+#p3 .textpic-gallery {
+    order: 2;
+    margin-top:3em;
+}
+
+#p3 .textpic {
+    flex-direction: column;
+}
+
+@media (min-width: 992px) {
+    #p3 .main-section {
+        height: calc(100vh - 130px);
     }
-}
-
-@media (min-width: 768px) {
-    #p3 .frame-container {
+    #p3 .textpic.textpic-right {
         position: relative;
-        max-width: 80ch;
         padding-right: 0;
-        padding-left: 0;
+        padding-left: 3.5rem;
         margin-right: auto;
-        margin-left: 3.5rem;
+        height: calc(100vh - 130px);
+    }
+    #p3 .textpic {
+        flex-direction: row;
+    }
+    #p3 .textpic-gallery {
+        order: 1;
+        margin-top:0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width:40%;
+    }
+    #p3 .image {
+        margin-bottom:0;
+    }
+    .gallery-row:last-child {
+        margin-bottom: .5em;
+    }
+    #p3 p {
+        max-width:70ch;
     }
 }
 
