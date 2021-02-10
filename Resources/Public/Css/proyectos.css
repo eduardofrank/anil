@@ -28,14 +28,14 @@
 }
 
 @media (min-width:768px) {
-.navbar-mainnavigation .navbar-brand-image img {
-    position: relative;
-    top: 5px;
-    left:5px;
-    width: auto;
-    max-height: 60px;
-    transform: none;
-}
+    .navbar-mainnavigation .navbar-brand-image img {
+        position: relative;
+        top: 5px;
+        left:5px;
+        width: auto;
+        max-height: 60px;
+        transform: none;
+    }
 }
 
 /**********************/
@@ -93,18 +93,47 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     }
-    
     .counter {
         display: none;
     }
+    .carousel-fullscreen .item {
+        height: 300px;
+    }
     .carousel {
         height:calc(100vh - 64px)
+    }
+    .carousel .carousel-control-icon {
+        position: absolute;
+        top: 26%;
+        transform: translate(0,-50%);
+        width: auto;
+        height: auto;
+        color: var(--clr-neutral-medium);
+        padding: 1em;
+        background-color: transparent;
+        transition: all 0.4s ease-in-out 0s;
+    }
+    .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: unset;
+        left: 0;
+        z-index: 15;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+        margin-right: 15%;
+        margin-left: 15%;
+        list-style: none;
+    }
+    .carousel .carousel-control-icon::before {
+        width: 1em;
+        height: 1em;
     }
 }
 
